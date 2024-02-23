@@ -1,0 +1,37 @@
+// Класс House
+class House {
+    var width: Double
+    var height: Double
+    
+    init(width: Double, height: Double) {
+        self.width = width
+        self.height = height
+    }
+    
+    func create() {
+        let area = width * height
+        print("Площадь дома: \(area) кв. м")
+    }
+    
+    func destroy() {
+        print("Дом уничтожен!")
+    }
+}
+
+// Класс SmallHouse - наследник класса House
+class SmallHouse: House {
+
+}
+
+// Класс BigHouse - наследник класса House
+class BigHouse: House {
+
+}
+
+let smallHouse = SmallHouse(width: 10.0, height: 5.0)
+smallHouse.create() 
+smallHouse.destroy() 
+
+let bigHouse = BigHouse(width: 15.0, height: 8.0)
+bigHouse.create()
+bigHouse.destroy() 
