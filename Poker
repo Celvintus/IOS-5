@@ -1,0 +1,39 @@
+import Foundation
+
+class Poker{
+    var deck: [String] = ["2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "J♠", "Q♠", "K♠", "A♠",
+                          "2♥", "3♥", "4♥", "5♥", "6♥", "7♥", "8♥", "9♥", "10♥", "J♥", "Q♥", "K♥", "A♥",
+                          "2♦", "3♦", "4♦", "5♦", "6♦", "7♦", "8♦", "9♦", "10♦", "J♦", "Q♦", "K♦", "A♦",
+                          "2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "J♣", "Q♣", "K♣", "A♣"]
+
+    func Hand() -> [String]{
+        var hand: [String] = []
+        for _ in 1...5{
+            if let card = deck.randomElement(){
+                hand.append(card)
+                deck.removeAll { $0 == card }
+            }
+        }
+        return hand
+    }
+
+    func evaluate(hand: [String]) -> String{
+        var Count: [String: Int] = [:]
+        for card in hand{
+            let rank = String(card.prefix(1)) 
+            Count[rank, default: 0] += 1
+        }
+
+        for count in Count.values{
+            if count == 2{
+                return "У вас есть пара"
+            }
+        }
+        return "У вас нет пар"
+    }
+}
+let Game = Poker()
+let hand = Game.Hand()
+print("Ваши карты: \(hand)")
+let result = Game.evaluate(hand: hand)
+print(result)
