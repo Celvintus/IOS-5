@@ -1,0 +1,44 @@
+class Student {
+    var name: String
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+class StudentSorting {
+    // Метод для сортировки по имени
+    func sortByName(students: [Student]) -> [Student] {
+        return students.sorted { $0.name < $1.name }
+    }
+    
+    // Метод для сортировки по возрасту
+    func sortByAge(students: [Student]) -> [Student] {
+        return students.sorted { $0.age < $1.age }
+    }
+}
+
+let student1 = Student(name: "Антон", age: 20)
+let student2 = Student(name: "Иван", age: 22)
+let student3 = Student(name: "Сергей", age: 19)
+
+// Создание массива студентов
+let students = [student1, student2, student3]
+
+let sorting = StudentSorting()
+
+// Сортировка студентов по имени
+let ByName = sorting.sortByName(students: students)
+print("Студенты по имени:")
+for student in ByName {
+    print("Имя: \(student.name), Возраст: \(student.age)")
+}
+
+// Сортировка студентов по возрасту
+let ByAge = sorting.sortByAge(students: students)
+print("\nСтуденты по возрасту:")
+for student in ByAge {
+    print("Имя: \(student.name), Возраст: \(student.age)")
+}
